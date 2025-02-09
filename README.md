@@ -3,11 +3,26 @@ ResizeVid is a simple WebUI using SpringBoot
 ![image](https://github.com/user-attachments/assets/7aabbd3c-5e03-4bc0-bbb0-20ef6c6280a8)
 
 ## Installation:
-Prereqs:
+### Prereqs
 - FFMPEG
 - JDK 23
-
+### Running it
 `./gradle bootRun`
+### WebUI
+`http://localhost:8080/`
+
+## InnerWorkings
+### API POST
+```
+curl 'http://localhost:8080/upload' -X POST -H 'User-Agent: ibechilling' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br, zstd' -H 'Content-Type: multipart/form-data; boundary=---------------------------42404143143876195079750815176' -H 'Origin: http://localhost:8080' -H 'Connection: keep-alive' -H 'Referer: http://localhost:8080/' -H 'Cookie: JSESSIONID=5412300CC1FEA11738F6D078DBAEC7DB' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-User: ?1' -H 'Priority: u=0, i' --data-binary $'-----------------------------42404143143876195079750815176\r\nContent-Disposition: form-data; name="file"; filename="6df5cb2d37284b828fe872b2459e8c69.mov"\r\nContent-Type: video/quicktime\r\n\r\n-----------------------------42404143143876195079750815176--\r\n'
+```
+### FFMPEG backend
+`ffmpeg -i 0a0cd6d5-525a-4f96-beb5-32a2536a7c71.mov -vf "scale=-2:360" resized-0a0cd6d5-525a-4f96-beb5-32a2536a7c71.mov`
+
+### Request
+```
+curl 'http://localhost:8080/videos/resized-0a0cd6d5-525a-4f96-beb5-32a2536a7c71.mov' -H 'User-Agent: ibechilling' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br, zstd' -H 'Connection: keep-alive' -H 'Referer: http://localhost:8080/' -H 'Cookie: JSESSIONID=A853E843D58FEED29C78C38BE0A10FE7' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-User: ?1' -H 'Priority: u=0, i'
+```
 
 
 ## Disclaimer for "ResizeVid":
