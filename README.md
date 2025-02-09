@@ -1,5 +1,6 @@
 # ResizeVid
 ResizeVid is a simple WebUI using SpringBoot
+![image](https://github.com/user-attachments/assets/7aabbd3c-5e03-4bc0-bbb0-20ef6c6280a8)
 
 ## Installation:
 Prereqs:
